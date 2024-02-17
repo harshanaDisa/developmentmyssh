@@ -1,0 +1,27 @@
+# dynamic.yml
+http:
+  routers:
+    router1:
+      rule: "Host(`example.com`)"
+      service: "service1"
+      entryPoints:
+        - "websecure"
+      tls:
+        certResolver: "myresolver"
+    router2:
+      rule: "Host(`example.net`)"
+      service: "service2"
+      entryPoints:
+        - "websecure"
+      tls:
+        certResolver: "myresolver"
+  services:
+    service1:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.49.2:30590"
+    service2:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.49.2:31087"
+

@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: echoheaders
+  namespace: default
+spec:
+  ingressClassName: ngrok
+  rules:
+  - host: echoheaders-rd7eefey.ngrok.app
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: echoheaders
+            port:
+              number: 80

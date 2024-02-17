@@ -1,0 +1,19 @@
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-wordpress
+  namespace: default
+spec:
+  ingressClassName: ngrok
+  rules:
+  - host: my-wordpress-u5unstm8.ngrok.app
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: my-wordpress
+            port:
+              number: 80
