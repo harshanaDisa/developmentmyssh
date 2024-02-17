@@ -1,0 +1,19 @@
+# ngrok Ingress Controller Configuration
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: game-2048-ingress
+  namespace: ngrok-ingress-controller
+spec:
+  ingressClassName: ngrok
+  rules:
+    - host: largely-adequate-flea.ngrok-free.app
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: my-release-wordpress
+                port:
+                  number: 80
